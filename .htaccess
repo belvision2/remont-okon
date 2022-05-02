@@ -1,0 +1,11 @@
+SetEnvIfNoCase User-Agent "YandexBot/3.0" bad_bot
+SetEnvIfNoCase User-Agent "YandexMobileBot/3.0" bad_bot
+SetEnvIfNoCase User-Agent "YandexImages/3.0" bad_bot
+SetEnvIfNoCase User-Agent "Googlebot/2.1" bad_bot
+SetEnvIfNoCase User-Agent "Googlebot-Image/1.0" bad_bot
+
+<Limit GET POST HEAD>
+ Order Allow,Deny
+ Allow from all
+ Deny from env=bad_bot
+</Limit>
